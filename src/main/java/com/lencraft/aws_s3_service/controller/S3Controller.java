@@ -36,5 +36,12 @@ public class S3Controller {
         fos.close();
         return convFile;
     }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteFile(@RequestParam String fileUrl) {
+        s3Service.deleteFile(fileUrl);
+        return ResponseEntity.ok("File deleted successfully: " + fileUrl);
+    }
+
 }
 
